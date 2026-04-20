@@ -1,41 +1,42 @@
 #include <stdio.h>  
 
 int main(){
-    char  cod_carta1[10], cod_carta2[10], nome_cid1[50], nome_cid2[50], estad_carta1, estad_carta2;
+    char  cod_carta1[10], cod_carta2[10], nome_cid1[50], nome_cid2[50], estad_carta1[50], estad_carta2[50];
     int populacao1, populacao2, pontos_tur1, pontos_tur2;
     float area1, area2, pib1, pib2, densi_pop1, densi_pop2, pib_cap1, pib_cap2, conver_pib1, conver_pib2;
+    double super_poder1, super_poder2;
 // Leitura das informações da primeira carta.
-    printf("Insira os dados da 1° carta\n");
-    printf("Estado: ");
-    scanf(" %c", &estad_carta1);
-    printf("Codigo: ");
+    printf("Insira os dados da 1° carta:\n");
+    printf("Estado:\n");
+    scanf("%s", estad_carta1);
+    printf("Codigo:\n");
     scanf("%s", cod_carta1);
-    printf("Nome da cidade: ");
+    printf("Nome da cidade:\n");
     scanf("%s", nome_cid1);
-    printf("População: ");
+    printf("População:\n");
     scanf("%d", &populacao1);
-    printf("Area: ");
+    printf("Area:\n");
     scanf("%f", &area1);
-    printf("PIB: ");
+    printf("PIB:\n");
     scanf("%f", &pib1);
-    printf("Pontos turisticos: ");
+    printf("Pontos turisticos:\n");
     scanf("%d", &pontos_tur1);
     printf("\n");
 //Leitura das informações da segunda carta.
-    printf("Insira os dados da 2° carta: \n");
-    printf("Estado: ");
-    scanf(" %c", &estad_carta2);
-    printf("Codigo: ");
+    printf("Insira os dados da 2° carta:\n");
+    printf("Estado:\n");
+    scanf("%s", estad_carta2);
+    printf("Codigo:\n");
     scanf("%s", cod_carta2);
-    printf("Nome da cidade: ");
+    printf("Nome da cidade:\n");
     scanf("%s", nome_cid2);
-    printf("População: ");
+    printf("População:\n");
     scanf("%d", &populacao2);
-    printf("Area: ");
+    printf("Area:\n");
     scanf("%f", &area2);
-    printf("PIB: ");
+    printf("PIB:\n");
     scanf("%f", &pib2);
-    printf("Pontos turisticos: ");
+    printf("Pontos turisticos:\n");
     scanf("%d", &pontos_tur2);
     printf("\n");
 //Calculo do PIP PER CAPTA e Densidade demografica
@@ -45,10 +46,12 @@ int main(){
     densi_pop2 = populacao2 / area2;
     pib_cap1 = conver_pib1 / populacao1;
     pib_cap2 = conver_pib2 / populacao2;
+    super_poder1 = populacao1 + area1 + conver_pib1 + densi_pop1;
+    super_poder2 = populacao2 + area2 + conver_pib2 + densi_pop2;
 
 //Mostrar dados da primeira carta.
     printf("Carta 1\n");
-    printf("Estado: %c\n", estad_carta1);
+    printf("Estado: %s\n", estad_carta1);
     printf("Código: %s\n", cod_carta1);
     printf("Nome da Cidade: %s\n", nome_cid1);
     printf("População: %d\n", populacao1);
@@ -57,10 +60,11 @@ int main(){
     printf("Número de Pontos Turísticos: %d\n", pontos_tur1);
     printf("Densidade Populacional: %.2fhab/km²\n", densi_pop1);
     printf("PIB per Capita: %.2f Reais\n", pib_cap1);
+    printf("Super poder: %.2f", super_poder1);
     printf("\n");
 //Mostrar dados da segunda carta.
     printf("Carta 2\n");
-    printf("Estado: %c\n", estad_carta2);
+    printf("Estado: %s\n", estad_carta2);
     printf("Código: %s\n", cod_carta2);
     printf("Nome da Cidade: %s\n", nome_cid2);
     printf("População: %d\n", populacao2);
@@ -69,6 +73,15 @@ int main(){
     printf("Número de Pontos Turísticos: %d\n", pontos_tur2);
     printf("Densidade Populacional: %.2fhab/km²\n", densi_pop2);
     printf("PIB per Capita: %.2f Reais\n", pib_cap2);
-
+    printf("Super poder: %.2f", super_poder2);
+//Comparação dos super poderes.    
+    printf("Comparação das cartas:\n");
+    printf("População: Carta %d Venceu\n", populacao1 > populacao2);
+    printf("Aréa: Carta %d Venceu\n", area1 > area2);
+    printf("PIB: Carta %d Venceu\n", pib1 > pib2);
+    printf("Pontos Turísticos: Carta %d Venceu\n", pontos_tur1 > pontos_tur2);
+    printf("Densidade Populacional: Carta %d Venceu\n", densi_pop1 < densi_pop2);
+    printf("PIB per Capita: Carta %d Venceu\n", pib_cap1 > pib_cap2);
+    printf("Super Poder: Carta %d Venceu\n", super_poder1 > super_poder2);
     return 0;
 }
